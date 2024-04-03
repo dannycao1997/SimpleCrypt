@@ -3,8 +3,8 @@ import static java.lang.Character.isUpperCase;
 import static java.lang.Character.toLowerCase;
 
 public class ROT13 {
-    private final char shiftStart; //char to start shift
-    private final char shiftEnd; //char to end shift
+    private final char shiftStart; //character to start shift
+    private final char shiftEnd; //character to end shift
 
     ROT13(Character cs, Character cf) {
         this.shiftStart = cs;           //cs is the char to start the shift
@@ -15,33 +15,32 @@ public class ROT13 {
         this('a', 'n'); // constructor
     }
 
-
     public String crypt(String text) {
 
-        StringBuilder sb = new StringBuilder(); //added
+        StringBuilder sb = new StringBuilder(); // added String Builder to convert
 
-        for (char c : text.toCharArray()) {
+        for (char c : text.toCharArray()) { // converting String text to letter/char
             if (c >= 'a' && c <= 'z') {
-                sb.append((char) ((c - 'a' + getShiftDistance()) % 26 + 'a'));
+                sb.append((char) ((c - 'a' + getShiftDistance()) % 26 + 'a')); // lower case
             } else if (c >= 'A' && c <= 'Z') {
-                sb.append((char) ((c - 'A' + getShiftDistance()) % 26 + 'A'));
+                sb.append((char) ((c - 'A' + getShiftDistance()) % 26 + 'A')); // upper case
             } else {
                 sb.append(c);
             }
         }
-        return sb.toString();
+        return sb.toString(); // return char back to string
     }
 
     private int getShiftDistance() {
         int shiftDistance;
 
-        if(Character.isLowerCase(shiftStart) && Character.isLowerCase(shiftEnd)) {
+        if(Character.isLowerCase(shiftStart) && Character.isLowerCase(shiftEnd)) { // lowercase method
             shiftDistance = shiftEnd - shiftStart;
         } else if
-        (Character.isUpperCase(shiftStart) && Character.isUpperCase(shiftEnd)) {
+        (Character.isUpperCase(shiftStart) && Character.isUpperCase(shiftEnd)) { // uppercase method
             shiftDistance = shiftEnd - shiftStart;
         } else {
-            throw new UnsupportedOperationException();
+            throw new UnsupportedOperationException(); // given
         }
         return shiftDistance;
     }
@@ -55,7 +54,8 @@ public class ROT13 {
     }
 
     public static String rotate(String s, Character c) {
-        int index = s.indexOf(c); //added
+
+        int index = s.indexOf(c); // 
         if (index != -1) {
             return s.substring(index) + s.substring(0, index);
         }
