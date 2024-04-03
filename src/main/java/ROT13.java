@@ -33,7 +33,17 @@ public class ROT13 {
     }
 
     private int getShiftDistance() {
-        return 0;
+        int shiftDistance;
+
+        if(Character.isLowerCase(shiftStart) && Character.isLowerCase(shiftEnd)) {
+            shiftDistance = shiftEnd - shiftStart;
+        } else if
+        (Character.isUpperCase(shiftStart) && Character.isUpperCase(shiftEnd)) {
+            shiftDistance = shiftEnd - shiftStart;
+        } else {
+            throw new UnsupportedOperationException();
+        }
+        return shiftDistance;
     }
 
     public String encrypt(String text) {
