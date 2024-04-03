@@ -54,11 +54,7 @@ public class ROT13 {
     }
 
     public static String rotate(String s, Character c) {
-
-        int index = s.indexOf(c); // 
-        if (index != -1) {
-            return s.substring(index) + s.substring(0, index);
-        }
-        return s;
+        int index = s.indexOf(c);  // changed code to simplified code
+        return s.substring(index) + s.substring(0, index);
     }
 }
