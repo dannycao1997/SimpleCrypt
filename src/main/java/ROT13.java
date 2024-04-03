@@ -32,6 +32,7 @@ public class ROT13 {
     }
 
     private int getShiftDistance() {
+
         int shiftDistance;
 
         if(Character.isLowerCase(shiftStart) && Character.isLowerCase(shiftEnd)) { // lowercase method
